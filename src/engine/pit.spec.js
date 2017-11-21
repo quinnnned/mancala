@@ -10,8 +10,7 @@ it('defaults to zero stones', () =>
     )
 )
 
-property(
-    'preserves the stone count with which it was created', 
+property('preserves the stone count with which it was created',
     any.naturalNumber, 
     n => 
         Pit.getStoneCount(
@@ -43,5 +42,3 @@ describe('Pit.addStone', () =>
             )
     )
 )
-
-

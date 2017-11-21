@@ -6,14 +6,19 @@ const snakeToCamel = SNAKE_CASE =>
 Object.keys(Events).forEach( eventName => {
     describe(eventName,  () => {
         it('returns an object with a .type key and one key for each parameter', 
-            () => 
+            () =>
                 expect(
-                    Events[eventName].length
+                    "type" in Events[eventName]()
+                ).toBe(
+                    true
+                )
+                &&
+                expect(
+                    1 + Events[eventName].length 
                 ).toBe(
                     Object.keys(
                         Events[eventName]()
                     ).length
-                    - 1 // for .type key
                 )
         )
 
