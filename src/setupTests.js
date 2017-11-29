@@ -1,7 +1,18 @@
-import jsc from 'jsverify'
+import {update, getValidMoves, isGameOver} from "./engine"
 
-global.property = jsc.property
-const any = {}
-global.any = any
-any.naturalNumber = jsc.nat
-any.boolean = jsc.bool
+global.getValidMoves = getValidMoves
+
+global.isGameOver = isGameOver
+
+global.T = true
+global.F = false
+
+global.check = (title, {before, moves, after}) => 
+    it(title, () => 
+        expect(
+            moves.reduce( (board, move) => 
+                update(board, move),
+                before
+            )
+        ).toEqual(after)
+    )
